@@ -5,3 +5,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require "faker"
+
+30.times do
+  allplants = Plante.new(
+    name: Faker::Cannabis.brand,
+    price: rand(100),
+    variety: Faker::Cannabis.cannabinoid
+  )
+  allplants.save
+end
