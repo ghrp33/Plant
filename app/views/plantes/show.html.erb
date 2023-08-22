@@ -1,10 +1,20 @@
-<h1><%= @plante.name %></h1>
+<div class="container d-flex">
+  <img src="https://fleuristeladiva.ca/boutique/image/cache/catalog/Plantes%20/Fleuriste_la_diva_plante_schefflera_plante_int%C3%A9rieure_Laval-550x550.jpg" alt="<%= @plante.name %>" height="300px">
+  <div>
+    <h1><%= @plante.name %></h1>
 
-<img src="asset/plant" alt="<%= @plante.name %>">
+    <p><%= @plante.variety %></p>
+    <p><%= @plante.description %></p>
+    <p><%= @plante.price %>$</p>
+    <% if @plante.description %>
+    <p><%= @plante.description %></p>
+    <% end %>
 
 <%= @plante.variety %>
 <%= @plante.description %>
 <p><%= @plante.price %></p>
 <%= cl_image_tag @plante.image.key, height: 300, width: 400, crop: :fill %>
 
+</div>
+</div>
 <%= link_to "Back to plants", plantes_path %>
