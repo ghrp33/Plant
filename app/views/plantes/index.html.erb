@@ -1,17 +1,19 @@
-<div class="d-flex">
+<div>
 
   <h1>All Plants</h1>
 
-  <% plantes.each do |plante| %>
-    <div class="card" style="width: 18rem;">
-      <img src="https://fleuristeladiva.ca/boutique/image/cache/catalog/Plantes%20/Fleuriste_la_diva_plante_schefflera_plante_int%C3%A9rieure_Laval-550x550.jpg" class="card-img-top" alt="<%= plant.name %>">
-      <div class="card-body">
-        <h5 class="card-title"><%= plant.name %></h5>
-        <p class="card-text"><%= plant.variety %></p>
-        <%= link_to "View details", plante_path(params[:id]) %>
+  <div class="d-flex">
+    <% @plantes.each do |plante| %>
+      <div class="card" style="width: 18rem;">
+        <img src="https://fleuristeladiva.ca/boutique/image/cache/catalog/Plantes%20/Fleuriste_la_diva_plante_schefflera_plante_int%C3%A9rieure_Laval-550x550.jpg" class="card-img-top" alt="<%= plant.name %>">
+        <div class="card-body">
+          <h5 class="card-title"><%= plante.name %></h5>
+          <p class="card-text"><%= plante.variety %></p>
+          <%= link_to "View details", plante_path(params[:id]) %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
   <%= link_to "Add a plant", new_plante_path %>
 

@@ -24,6 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_203609) do
     t.index ["user_id"], name: "index_plantes_on_user_id"
   end
 
+  create_table "requests", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "plante_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["plante_id"], name: "index_requests_on_plante_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -37,4 +46,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_21_203609) do
   end
 
   add_foreign_key "plantes", "users"
+  add_foreign_key "requests", "plantes"
+  add_foreign_key "requests", "users"
 end
