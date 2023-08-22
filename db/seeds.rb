@@ -9,9 +9,10 @@
 require "faker"
 
 30.times do
-  Plante.new(
+  allplants = Plante.new(
     name: Faker::Cannabis.brand,
     price: rand(100),
     variety: Faker::Cannabis.cannabinoid
   )
+  allplants.save
 end
