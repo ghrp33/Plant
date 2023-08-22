@@ -3,16 +3,9 @@ class RequestsController < ApplicationController
     @requests = Request.all
   end
 
-  def new
-  end
-
-  def create
-  end
-
   def show
-    @request = @plant.requests.find(params[:id])
   end
 
-  def update
+  def new
   end
 end
