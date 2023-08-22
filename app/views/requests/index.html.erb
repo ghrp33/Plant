@@ -1,7 +1,11 @@
-<h1>my requests</h1>
+<h1>My requests</h1>
 
 <ul>
 <% @requests.each do |request| %>
-<li><%= request %></li>
+<li>
+<%= request.description %>
+<%= request.status.capitalize %>
+<%= request.plante.name %>
+</li>
 <% end %>
 </ul>

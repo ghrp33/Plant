@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     resources :requests, only: %i[index show new create update]
   end
 
-  resources :requests, only: %i[index show new]
+  resources :requests, only: %i[index show]
 end
