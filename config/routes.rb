@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :plantes, only: %i[index show new create] do
-    resources :requests, only: %i[index show new create update]
+    resources :requests, only: %i[show new create update]
   end
 
-  resources :requests, only: %i[index show]
+  resources :requests, only: %i[index]
 end
