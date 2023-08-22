@@ -10,6 +10,10 @@
     <p><%= @plante.description %></p>
     <% end %>
 
+<%= @plante.variety %>
+<%= @plante.description %>
+<p><%= @plante.price %></p>
+<%= cl_image_tag @plante.image.key, height: 300, width: 400, crop: :fill %>
 
 </div>
 </div>
