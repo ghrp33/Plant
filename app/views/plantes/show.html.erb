@@ -1,0 +1,9 @@
+<h1><%= @plante.name %></h1>
+
+<img src="asset/plant" alt="<%= @plante.name %>">
+
+<%= @plante.variety %>
+<%= @plante.description %>
+<p><%= @plante.price %></p>
+
+<%= link_to "Back to plants", plantes_path %>
