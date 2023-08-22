@@ -4,8 +4,6 @@ class PlantesController < ApplicationController
   end
 
   def show
-    @plante = Plante.find(params[:id])
-    @requests = @plante.requests
   end
 
   def new
