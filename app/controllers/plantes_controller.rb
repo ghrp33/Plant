@@ -12,8 +12,10 @@ class PlantesController < ApplicationController
 
   def create
     @plante = Plante.new(plante_params)
-    @plante.save
-    redirect_to plante_path(@plante)
+    if @plante.save
+      redirect_to plante_path(@plante)
+    else
+      render:new, status: :unprocessable_entity
   end
 
   private
