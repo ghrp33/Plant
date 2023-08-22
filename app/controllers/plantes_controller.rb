@@ -5,6 +5,7 @@ class PlantesController < ApplicationController
 
   def show
     @plante = Plante.find(params[:id])
+    @requests = @plante.requests
   end
 
   def new
@@ -25,5 +26,4 @@ class PlantesController < ApplicationController
   def plante_params
     params.require(:plante).permit(:name, :price, :variety, :description)
   end
-
 end
