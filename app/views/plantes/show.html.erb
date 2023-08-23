@@ -17,3 +17,4 @@
   </div>
 </div>
 <%= link_to "Back to plants", plantes_path %>
+<%= link_to "Request this plant", plante_requests_path(@plante), data: { turbo_method: :post } %>
