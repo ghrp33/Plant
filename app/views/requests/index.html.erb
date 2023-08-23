@@ -11,7 +11,7 @@
         <% end %>
           <div class="card-body">
             <h5 class="card-title"></h5>
-            <p class="card-text">Seller: <%= request.user.first_name %></p>
+            <p class="card-text">Seller: <%= request.plante.user.first_name %></p>
             <p class="card-text">status: <% if request.status.nil? %>
             pending
             <% elsif request.status == true %>
