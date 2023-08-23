@@ -1,20 +1,21 @@
 
 <div>
-
-  <h1>All Plants</h1>
-
+  <%# <h1>All Plants</h1> %>
+<div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://res-console.cloudinary.com/doxhi8kqj/thumbnails/v1/image/upload/v1692738264/ZGV2ZWxvcG1lbnQvNTJteTJjMWNpZnVsb3JyZW1hOXJtdDEwbWozcQ==/preview)">
+  All plants
+</div>
   <%# Plant card %>
   <div class="row row-cols-1 row-cols-md-4 g-4">
     <% @plantes.each do |plante| %>
       <div class="col">
-        <div class="card" style="width: 18rem;">
-          <div>
+        <div class="card-plante" style="width: 18rem;">
+          <div class="image">
             <% if  plante.image.attached?%>
               <%= cl_image_tag plante.image.key, height: 300, width: 300, crop: :fill %>
             <% else %>
               <img src="/assets/No_images_available.webp" alt="<%= plante.name %>" height="300px" width="100%">
             <% end %>
-  </div>
+          </div>
           <div class="card-body">
             <h5 class="card-title"><%= plante.name %></h5>
             <p class="card-text"><%= plante.variety %></p>
