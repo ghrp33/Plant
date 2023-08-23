@@ -4,7 +4,11 @@
   <% @requests.each do |request| %>
     <div class="col">
       <div class="card" style="width: 18rem;">
-        <img src="https://media.istockphoto.com/id/1470078088/photo/variedad-de-flores-y-plantas-artificiales-suculentas-rosas-cactus-en-macetas-de-colores.jpg?s=1024x1024&w=is&k=20&c=EbXXNfO-2UDylxfEwURc8u9s2ab3ahHxQMMhgDOCgqQ=" class="card-img-top" alt="">
+        <% if  request.plante.image.attached?%>
+          <%= cl_image_tag request.plante.image.key, height: 300, width: 300, crop: :fill %>
+        <% else %>
+          <%= image_tag "No_images_available.webp", alt: request.plante.name, width: "300px", height: "100%" %>
+        <% end %>
           <div class="card-body">
             <h5 class="card-title"></h5>
             <p class="card-text">Seller: <%= request.user.first_name %></p>
