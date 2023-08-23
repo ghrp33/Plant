@@ -5,7 +5,7 @@ class PlantesController < ApplicationController
 
   def show
     @plante = Plante.find(params[:id])
-    @requests = @plante.requests
+    # @requests = @plante.requests
   end
 
   def new
