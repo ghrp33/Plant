@@ -12,12 +12,30 @@ require "open-uri"
 Plante.destroy_all
 User.destroy_all
 
-user = User.new(
+main_user = User.new(
   first_name: "a",
   last_name: "b",
   email: "a@email.com",
   password: "123456"
 )
+main_user.save!
+
+main_plante = Plante.new(
+  name: Faker::Cannabis.brand,
+  price: rand(100),
+  variety: Faker::Cannabis.cannabinoid,
+)
+file = URI.open("https://img.freepik.com/photos-gratuite/plante-lys-paix-dans-objet-decoration-pot-terre-cuite_53876-146302.jpg?w=2000")
+main_plante.image.attach(io: file, filename: "main_plante", content_type: "image/png")
+main_plante.user = main_user
+main_plante.save!
+
+main_request = Request.new(
+  user: main_user,
+  plante: main_plante
+)
+
+main_request.save!
 
 5.times do
   user = User.new(
