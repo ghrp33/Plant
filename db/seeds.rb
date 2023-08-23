@@ -7,9 +7,18 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 require "faker"
+require "open-uri"
 
 Plante.destroy_all
 User.destroy_all
+
+user = User.new(
+  first_name: "a",
+  last_name: "b",
+  email: "a@email.com",
+  password: "123456"
+)
+
 5.times do
   user = User.new(
     first_name: Faker::Name.first_name,
@@ -18,13 +27,17 @@ User.destroy_all
     password: Faker::Color.hex_color
   )
   user.save!
-  rand(0...5).times do
+  5.times do
     plante = Plante.new(
       name: Faker::Cannabis.brand,
       price: rand(100),
-      variety: Faker::Cannabis.cannabinoid
+      variety: Faker::Cannabis.cannabinoid,
     )
+    file = URI.open("https://fleuristeladiva.ca/boutique/image/cache/catalog/Plantes%20/Fleuriste_la_diva_plante_schefflera_plante_int%C3%A9rieure_Laval-550x550.jpg")
+    plante.image.attach(io: file, filename: "plante", content_type: "image/png")
     plante.user = user
     plante.save!
   end
 end
+
+puts "#{User.count} users and #{Plante.count} plants created"
