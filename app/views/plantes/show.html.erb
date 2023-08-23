@@ -1,20 +1,21 @@
 <div class="container d-flex">
+  <img src="https://fleuristeladiva.ca/boutique/image/cache/catalog/Plantes%20/Fleuriste_la_diva_plante_schefflera_plante_int%C3%A9rieure_Laval-550x550.jpg" alt="<%= @plante.name %>" height="300px">
   <div>
-    <% if  @plante.image.attached?%>
-      <%= cl_image_tag @plante.image.key, height: 300, width: 300, crop: :fill %>
-    <% else %>
-      <img src="/assets/No_images_available.webp" alt="<%= @plante.name %>" height="100%" width="300px">
-    <% end %>
-  </div>
-  <div>
-    <h1><%= @plante.name %></h1>
-
+    <h1 class='p-5'><%= @plante.name %></h1>
     <p><%= @plante.variety %></p>
+    <p><%= @plante.description %></p>
     <p><%= @plante.price %>$</p>
-    <% if @plante.description %>
-      <p><%= @plante.description %></p>
-    <% end %>
+      <% if @plante.description %>
+        <p><%= @plante.description %></p>
+      <% end %>
   </div>
 </div>
-<%= link_to "Back to plants", plantes_path %>
-<%= link_to "Request this plant", plante_requests_path(@plante), data: { turbo_method: :post } %>
+
+<div class="container d-flex">
+  <button type="button" class="btn btn-outline-primary align-right">
+    <%= link_to "Back to plants", plantes_path %>
+  </button>
+  <button type="button" class="btn btn-outline-primary align-right">
+  <%= link_to "Request this plant", plante_requests_path(@plante), data: { turbo_method: :post } %>
+  </button>
+</div>
