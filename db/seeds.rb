@@ -26,5 +26,6 @@ User.destroy_all
     )
     plante.user = user
     plante.save!
+    Request.create!(user: user, plante: plante, status:)
   end
 end
