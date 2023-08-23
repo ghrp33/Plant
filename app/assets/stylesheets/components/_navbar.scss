@@ -11,3 +11,16 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbar .navbar-nav .nav-link {
+  color: #FFF;
+  font-size: 1.1em;
+}
+
+.navbar .navbar-nav .nav-item .nav-link {
+  padding: 0 0.5em;
+}
+
+.navbar .navbar-nav .nav-item:not(:last-child) .nav-link {
+  border-right: 1px solid #FFF;
+}
