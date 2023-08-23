@@ -5,7 +5,6 @@ ruby "3.1.2"
 
 gem "devise"
 
-# gem "dotenv-rails"
 gem "cloudinary"
 
 gem "enum"
