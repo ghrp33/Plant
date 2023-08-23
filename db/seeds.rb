@@ -55,6 +55,7 @@ main_request.save!
     plante.image.attach(io: file, filename: "plante", content_type: "image/png")
     plante.user = user
     plante.save!
+    Request.create!(user: user, plante: plante, status:)
   end
 end
 

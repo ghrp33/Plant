@@ -2,7 +2,7 @@ class RequestsController < ApplicationController
   before_action :set_plante, only: %i[new create]
 
   def index
-    @requests = Request.all
+    @requests = current_user.requests
   end
 
   # def show
