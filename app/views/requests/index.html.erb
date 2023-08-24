@@ -1,5 +1,11 @@
 <div class="container">
-  <h1 class="p-5">My outgoing requests</h1>
+ <div class='row py-5'>
+    <div class='col-10'>
+      <h1>My outgoing requests</h1>
+    </div>
+    <div class='col-2'>
+      <%= link_to 'return to homepage', root_path, class: 'btn btn-primary' %>
+    </div>
 
   <div class="row row-cols-1 row-cols-md-4 g-4">
     <% @requests.each do |request| %>
@@ -26,6 +32,4 @@
       </div>
     <% end %>
   </div>
-
-  <%= link_to 'return to homepage', root_path, class: 'btn btn-primary' %>
 </div>
