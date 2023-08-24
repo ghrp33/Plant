@@ -32,7 +32,7 @@ first_plante.user = first_user
 first_plante.save!
 
 second_user = User.new(
-  second_name: "c",
+  first_name: "c",
   last_name: "d",
   email: "c@email.com",
   password: "123456"
