@@ -1,4 +1,11 @@
-<h1>My outgoing requests</h1>
+<div class="container">
+ <div class='row py-5'>
+    <div class='col-10'>
+      <h1>My outgoing requests</h1>
+    </div>
+    <div class='col-2'>
+      <%= link_to 'return to homepage', root_path, class: 'btn btn-primary' %>
+    </div>
 
 <div class="container">
   <div class="row justify-content-center">
@@ -29,14 +36,15 @@
             <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
             <h5 class="card-title"></h5>
             <p class="fw-bold">Seller: <%= request.plante.user.first_name %></p>
-            <p class="fst-italic">status: <% if request.status.nil? %>
-            pending
-            <% elsif request.status == true %>
-              approved
-            <% else %>
-              declined
-            <% end %>
-            <p>Plante name: <%= request.plante.name %></p>
+            <p class="fst-italic">status: 
+              <% if request.status.nil? %>
+                pending
+              <% elsif request.status == true %>
+                approved
+              <% else %>
+                declined
+              <% end %>
+                <p>Plante name: <%= request.plante.name %></p>
           </div>
       </div>
     <% end %>

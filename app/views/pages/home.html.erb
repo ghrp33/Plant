@@ -1,2 +1,20 @@
-<h1>Welcome to PlantIt!</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%# <h1>Welcome to PlantIt!</h1>
+<p>Find me in app/views/pages/home.html.erb</p> %>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80);">
+  <div class="container">
+    <h1>Welcome to <strong>Plant it!</strong></h1>
+    <p>Finding plants has never been easier</p>
+    <%= link_to "Shop Now", plantes_path, class: "btn-flat" %>
+  </div>
+</div>
+</div>
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+  </div>
+  <div class="footer-copyright">
+    Follow Plant It <i class="fas fa-heart"></i>
+  </div>
+</div>
