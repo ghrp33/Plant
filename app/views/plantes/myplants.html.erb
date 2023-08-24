@@ -1,3 +1,4 @@
+
 <div class="container d-flex">
   <% @myplants.each do |plante| %>
     <div class="col">
@@ -35,4 +36,5 @@
   <% end %>
 </div>
 
-<%= link_to "Back to plants", plantes_path %>
+
+<%= link_to "Back to plants", plantes_path, class: 'btn btn-primary' %>
