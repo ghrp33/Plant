@@ -31,13 +31,6 @@ main_plante.image.attach(io: file, filename: "main_plante", content_type: "image
 main_plante.user = main_user
 main_plante.save!
 
-main_request = Request.new(
-  user: main_user,
-  plante: main_plante
-)
-
-main_request.save!
-
 5.times do
   user = User.new(
     first_name: Faker::Name.first_name,

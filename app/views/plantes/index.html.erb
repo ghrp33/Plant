@@ -9,17 +9,23 @@
       <div class="col">
         <div class="card" style="width: 18rem;">
           <div>
-            <% if  plante.image.attached?%>
+            <% if plante.image.attached?%>
               <%= cl_image_tag plante.image.key, height: 300, width: 300, crop: :fill %>
             <% else %>
               <%= image_tag "No_images_available.webp", alt: plante.name, width: "100%", height: "300px" %>
             <% end %>
-  </div>
+          </div>
           <div class="card-body">
             <h5 class="card-title"><%= plante.name %></h5>
             <p class="card-text"><%= plante.variety %></p>
             <p class="card-text"><%= plante.price %>$</p>
-            <%= link_to "View details", plante_path(plante) %>
+            <% if plante.user == current_user %>
+              <%= link_to "View details", plante_path(plante) %>
+            <% else %>
+              <%= link_to "View details", plante_path(plante) %>
+              <% request = Request.new(user: current_user, plante: plante) %>
+              <%= link_to "Make a request", plante_requests_path(plante), data: { turbo_method: :post } %>
+            <% end %>
           </div>
         </div>
       </div>
