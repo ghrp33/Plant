@@ -1,24 +1,26 @@
-<div class="container d-flex">
+
+<div class="row row-cols-1 row-cols-md-4 g-4">
   <% @myplants.each do |plant| %>
-
-    <h1><%= plant.name %></h1>
-    <p><%= plant.variety %></p>
-    <p><%= plant.price %>$</p>
-
-    <% if plant.description %>
-      <p><%= plant.description %></p>
-    <% end %>
-
-  <%# #request status %>
-  <%# test %>
-
-    <% if  plant.image.attached?%>
-      <%= cl_image_tag plant.image.key, height: 300, width: 300, crop: :fill %>
-    <% else %>
-      <%= image_tag "No_images_available.webp", alt: plant.name, width: "300px", height: "100%" %>
-    <% end %>
-
+    <div class="col">
+      <div class="card" style="width: 18rem;">
+        <div>
+          <% if  plant.image.attached?%>
+            <a href="<%= plante_path(plant) %>">
+              <%= cl_image_tag plant.image.key, height: 300, width: 300, crop: :fill %>
+            </a>
+          <% else %>
+            <%= image_tag "No_images_available.webp", alt: plant.name, width: "100%", height: "300px" %>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= plant.name %></h5>
+          <p class="card-text"><%= plant.variety %></p>
+          <p class="card-text"><%= plant.price %>$</p>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
-<%= link_to "Back to plants", plantes_path %>
+
+<%= link_to "Back to plants", plantes_path, class: 'btn btn-primary' %>
