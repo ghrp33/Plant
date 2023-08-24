@@ -16,5 +16,10 @@
     <% end %>
   </div>
 </div>
-<%= link_to "Back to plants", plantes_path %>
-<%= link_to "Request this plant", plante_requests_path(@plante), data: { turbo_method: :post } %>
+
+<% if @plante.user == current_user %>
+  <%= link_to "Back to plants", plantes_path, class: 'btn btn-primary' %>
+<% else %>
+<%= link_to "Back to plants", plantes_path, class: 'btn btn-primary'%>
+<%= link_to "Request this plant", plante_requests_path(@plante), data: { turbo_method: :post }, class: 'btn btn-primary'%>
+<% end %>
