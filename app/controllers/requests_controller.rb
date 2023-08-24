@@ -17,7 +17,8 @@ class RequestsController < ApplicationController
     if @request.save
       redirect_to requests_path
     else
-      render 'requests', status: 422
+      flash.now[:alert] = 'you have already made a request'
+      render 'plantes/show', status: 422
     end
   end
 
