@@ -19,10 +19,13 @@
             <h5 class="card-title"><%= plante.name %></h5>
             <p class="card-text"><%= plante.variety %></p>
             <p class="card-text"><%= plante.price %>$</p>
-            <%= link_to "View details", plante_path(plante) %>
-
-            <% request = Request.new(user: current_user, plante: plante) %>
-            <%= link_to "Make a request", plante_requests_path(plante), data: { turbo_method: :post } %>
+            <% if plante.user == current_user %>
+              <%= link_to "View details", plante_path(plante) %>
+            <% else %>
+              <%= link_to "View details", plante_path(plante) %>
+              <% request = Request.new(user: current_user, plante: plante) %>
+              <%= link_to "Make a request", plante_requests_path(plante), data: { turbo_method: :post } %>
+            <% end %>
           </div>
         </div>
       </div>
