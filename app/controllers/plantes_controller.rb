@@ -22,6 +22,10 @@ class PlantesController < ApplicationController
     end
   end
 
+  def myplants
+    @myplants = Plante.where(user: current_user)
+  end
+
   private
 
   def plante_params

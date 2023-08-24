@@ -5,9 +5,6 @@ class RequestsController < ApplicationController
     @requests = current_user.requests
   end
 
-  # def show
-  # end
-
   def new
     @request = Request.new
   end

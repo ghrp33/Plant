@@ -11,5 +11,6 @@ Rails.application.routes.draw do
     resources :requests, only: %i[new create]
   end
 
-  resources :requests, only: %i[index show update]
+  resources :requests, only: %i[index update]
+  get '/myplants', to: 'plantes#myplants'
 end
