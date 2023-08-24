@@ -19,7 +19,29 @@ class RequestsController < ApplicationController
     end
   end
 
-  private
+  def accept
+    @request = Request.find(params[:id])
+    @request.status = true
+    if @request.save
+      redirect_to requests_path
+    else
+      flash.now[:alert] = 'No longer available'
+      render 'plantes/show', status: 422
+    end
+  end
+
+  def reject
+    @request = Request.find(params[:id])
+    @request.status = false
+    if @request.save
+      redirect_to requests_path
+    else
+      flash.now[:alert] = 'No longer available'
+      render 'plantes/show', status: 422
+    end
+  end
+
+    private
 
   def set_plante
     @plante = Plante.find(params[:plante_id])

@@ -45,7 +45,6 @@
             <p class="card-text"><%= plante.price %>$</p>
             <% if plante.user == current_user %>
             <% else %>
-              <% request = Request.new(user: current_user, plante: plante) %>
               <%= link_to "Make a request", plante_requests_path(plante), data: { turbo_method: :post }, class: 'btn btn-primary' %>
             <% end %>
 

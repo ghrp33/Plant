@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :requests, only: %i[new create]
   end
 
-  resources :requests, only: %i[index update]
+  resources :requests, only: %i[index]
   get '/myplants', to: 'plantes#myplants'
+  patch '/accept/:id', to: 'requests#accept', as: "accept"
+  patch '/reject/:id', to: 'requests#reject', as: "reject"
 end
