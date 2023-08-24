@@ -1,14 +1,16 @@
-<h1>Add a new plant:</h1>
-<%= form_with model: @plante do |f| %>
-<%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :price %>
-  <%= f.number_field :price %>
-  <%= f.label :variety %>
-  <%= f.text_field :variety %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :image%>
-  <%= f.file_field :image %>
-  <%= f.submit "Add plant" %>
-<% end %>
+<div class="container">
+  <h1>Add a new plant:</h1>
+  <%= form_with model: @plante do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+    <%= f.label :variety %>
+    <%= f.text_field :variety %>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+    <%= f.label :image%>
+    <%= f.file_field :image %>
+    <%= f.submit "Add plant" %>
+  <% end %>
+</div>
