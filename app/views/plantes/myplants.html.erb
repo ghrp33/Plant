@@ -1,21 +1,35 @@
 
-<div class="row row-cols-1 row-cols-md-4 g-4">
-  <% @myplants.each do |plant| %>
+<div class="container d-flex">
+  <% @myplants.each do |plante| %>
     <div class="col">
       <div class="card" style="width: 18rem;">
         <div>
-          <% if  plant.image.attached?%>
-            <a href="<%= plante_path(plant) %>">
-              <%= cl_image_tag plant.image.key, height: 300, width: 300, crop: :fill %>
-            </a>
-          <% else %>
-            <%= image_tag "No_images_available.webp", alt: plant.name, width: "100%", height: "300px" %>
-          <% end %>
+          <div>
+          <%# plant image %>
+            <% if  plante.image.attached?%>
+              <%= cl_image_tag plante.image.key, height: 300, width: 300, crop: :fill %>
+            <% else %>
+              <%= image_tag "No_images_available.webp", alt: plante.name, width: "300px", height: "100%" %>
+            <% end %>
+          </div>
+          <%# plant info %>
+          <div class="card-body">
+            <h5 class="card-title"><%= plante.name %></h5>
+            <p class="card-text"><%= plante.variety %></p>
+            <p class="card-text"><%= plante.price %>$</p>
+          </div>
         </div>
-        <div class="card-body">
-          <h5 class="card-title"><%= plant.name %></h5>
-          <p class="card-text"><%= plant.variety %></p>
-          <p class="card-text"><%= plant.price %>$</p>
+        <%# plant requests %>
+        <div>
+          <% if plante.requests.any? %>
+            <% plante.requests.each do |request| %>
+              <% if request.status.nil? %>
+                <%= request.user.first_name %>
+                <%= link_to "Accept", accept_path(request), data: { turbo_method: :patch } %>
+                <%= link_to "Reject", reject_path(request), data: { turbo_method: :patch } %>
+              <% end %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
