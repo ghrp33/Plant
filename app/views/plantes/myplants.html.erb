@@ -1,5 +1,6 @@
-
 <div class="container d-flex">
+  <h1 class="p-5">My Plants</h1>
+  
   <% @myplants.each do |plante| %>
     <div class="col">
       <div class="card" style="width: 18rem;">
@@ -30,11 +31,10 @@
               <% end %>
             <% end %>
           <% end %>
+          </div>
         </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+
+  <%= link_to "Back to plants", plantes_path, class: 'btn btn-primary' %>
 </div>
-
-
-<%= link_to "Back to plants", plantes_path, class: 'btn btn-primary' %>
