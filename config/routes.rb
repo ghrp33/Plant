@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/myplants', to: 'plantes#myplants'
   patch '/accept/:id', to: 'requests#accept', as: "accept"
   patch '/reject/:id', to: 'requests#reject', as: "reject"
+  delete '/cancel/:id', to: 'requests#cancel', as: "cancel"
 end
