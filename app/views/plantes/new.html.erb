@@ -3,7 +3,7 @@
     <%= simple_form_for (@plante) do |f| %>
     <%= f.input :name %>
     <%= f.input :price %>
-    <%= f.input :variety, collection: [ "A", "B", "C"] %>
+    <%= f.input :variety, collection: [ "Monstera", "Pothos", "Succulent", "Bonsai", "Palm", "Snake", "Tropical", "Fern", "Ficus" ]  %>
     <%= f.input :description %>
     <%= f.input :image %>
     <%= f.button :submit, "Add plant", class: 'btn btn-primary' %>
