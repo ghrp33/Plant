@@ -49,12 +49,10 @@
                     <h5 class="fw-bold"><%= plante.name %></h5>
                     <p class="fst-italic"><%= plante.variety %></p>
                   </div>
-                  <div class="col">
+                  <div class="col-4">
                     <div class="buy-info">
                       <p class="card-trip-pricing"><%= plante.price %>$</p>
-                      <div class="request-button">
-                        <%= link_to "Buy", plante_requests_path(plante), class: "btn-flat text-decoration-none", data: { turbo_method: :post } if plante.user != current_user %>
-                      </div>
+                      <%= link_to "Buy", plante_requests_path(plante), class: "btn-flat text-decoration-none", data: { turbo_method: :post } if plante.user != current_user %>
                     </div>
                   </div>
                 </div>
