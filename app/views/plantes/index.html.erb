@@ -43,7 +43,11 @@
                 </a>
               </div>
               <div class="card-body">
+                <% if plante.user == current_user %>
                 <img src="https://avatars.githubusercontent.com/u/119386023?v=4" class="card-user avatar-bordered"/>
+                <% else %>
+                <img src="https://avatars.githubusercontent.com/u/138805405?v=4" class="card-user avatar-bordered"/>
+                <% end %>
                 <div class="row">
                   <div class="col-8">
                     <h5 class="fw-bold"><%= plante.name %></h5>
