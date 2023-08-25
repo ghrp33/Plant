@@ -29,6 +29,14 @@ class PlantesController < ApplicationController
     @myplants = Plante.where(user: current_user)
   end
 
+  def destroy
+    @myplants = Plante.where(user: current_user)
+    @myplants = @myplants.find(params[:id])
+    @myplants.destroy
+
+    redirect_to myplants_path, status: :see_other
+  end
+
   private
 
   def plante_params

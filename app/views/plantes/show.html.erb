@@ -1,4 +1,5 @@
-<div class="container d-flex">
+
+<div class="container p-5 d-flex justify-content-center">
   <div>
     <% if  @plante.image.attached?%>
       <%= cl_image_tag @plante.image.key, height: 300, width: 300, crop: :fill %>
@@ -8,18 +9,25 @@
   </div>
   <div>
     <h1><%= @plante.name %></h1>
-
     <p><%= @plante.variety %></p>
-    <p><%= @plante.price %>$</p>
+    <p><strong><%= @plante.price %>$</strong></p>
     <% if @plante.description %>
       <p><%= @plante.description %></p>
     <% end %>
+    <p>Seller: <%= @plante.user.first_name %></p>
   </div>
 </div>
 
-<% if @plante.user == current_user %>
-  <%= link_to "Back to plants", plantes_path, class: 'btn btn-primary' %>
-<% else %>
-<%= link_to "Back to plants", plantes_path, class: 'btn btn-primary'%>
-<%= link_to "Request this plant", plante_requests_path(@plante), data: { turbo_method: :post }, class: 'btn btn-primary'%>
-<% end %>
+<div class="d-flex justify-content-center p-3">
+  <div>
+    <% if @plante.user == current_user %>
+      <%= link_to "Back to plants", plantes_path, class: 'btn-flat text-decoration-none' %>
+      <%= link_to "Remove plant", delete_path(@plante), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn-flat text-decoration-none'%>
+  </div>
+  <div>
+    <% else %>
+    <%= link_to "Back to plants", plantes_path, class: 'btn-flat text-decoration-none'%>
+    <%= link_to "Request this plant", plante_requests_path(@plante), data: { turbo_method: :post }, class: 'btn-flat text-decoration-none'%>
+    <% end %>
+  </div>
+</div>
