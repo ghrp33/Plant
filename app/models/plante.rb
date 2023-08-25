@@ -10,4 +10,11 @@ class Plante < ApplicationRecord
                   using: {
                     tsearch: { prefix: true }
                   }
+
+  include PgSearch::Model
+  pg_search_scope :search_by_variety,
+                  against: :variety,
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 end

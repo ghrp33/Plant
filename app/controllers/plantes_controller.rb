@@ -2,6 +2,7 @@ class PlantesController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
   def index
     @plantes = Plante.all
+    @plantes = @plantes.search_by_variety(params[:variety]) if params[:variety].present?
     if params[:query].present?
       @plantes = Plante.search_by_name_and_variety_and_description(params[:query])
     end

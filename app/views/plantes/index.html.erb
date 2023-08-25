@@ -17,9 +17,12 @@
             class: "form-control",
             placeholder: "Look for plant"
         %>
+
+      <%= select_tag(:variety, options_for_select([ "Monstera", "Pothos", "Succulent", "Bonsai", "Palm", "Snake", "Tropical", "Fern", "Ficus" ]), prompt: "Variety") %>
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
     <% end %>
   </div>
+
   </div>
 
   <%# Plant card %>
