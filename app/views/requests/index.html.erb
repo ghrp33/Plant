@@ -1,47 +1,55 @@
 <div class="container">
-  <h1 class="py-5">My outgoing requests</h1>
-
-
-  <div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
-    <%= form_with url: plantes_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Look for plant"
-        %>
-      <%= submit_tag "Search", name: "", class: "btn-flat text-decoration-none" %>
-    <% end %>
-  </div>
-  </div>
-  <div class="row row-cols-1 row-cols-md-4 g-4">
-    <% @requests.each do |request| %>
-      <div class="col">
-       <% if  request.plante.image.attached?%>
-          <div class="card">
-            <a href="<%= plante_path(request.plante) %>">
-             <%= cl_image_tag request.plante.image.key, class: "object-fit-cover", width: "100%", height: "300px" %>
-            </a>
-          </div>
-        <% else %>
-          <%= image_tag "No_images_available.webp", alt: request.plante.name, width: "100%", height: "300px" %>
-        <% end %>
-          <div class="card-body">
-            <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-            <h5 class="card-title"></h5>
-            <p class="fw-bold">Seller: <%= request.plante.user.first_name %></p>
-            <p class="fst-italic">status:
-              <% if request.status.nil? %>
-                pending
-              <% elsif request.status == true %>
-                approved
-              <% else %>
-                declined
-              <% end %>
-                <p>Plante name: <%= request.plante.name %></p>
-                <%= link_to "Cancel request", cancel_path(request), data: { turbo_method: :delete } %>
-          </div>
+  <%# Banner %>
+  <div class='row py-5'>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80)">
+      Cart
       </div>
-    <% end %>
+  </div>
+
+  <%# grid %>
+    <div class="cards">
+      <% if @requests.any? %>
+        <% @requests.each do |request| %>
+          <%# Cards %>
+            <div class="card-product">
+              <div class="card-product-info">
+                <a href ="<%= plante_path(request.plante) %>">
+                  <%# plante image %>
+                  <% if  request.plante.image.attached?%>
+                    <%= cl_image_tag request.plante.image.key, class: "object-fit-cover", width: "100%", height: "300px" %>
+                  <% else %>
+                    <%= image_tag "No_images_available.webp", alt: request.plante.name, width: "100%", height: "300px" %>
+                  <% end %>
+                  <%# plante info %>
+                  <div class="card-product-text">
+                    <h5><strong><%= request.plante.name %></strong></h5>
+                    <p><%= request.plante.variety %></p>
+                    <p><%= request.plante.price %>$</p>
+                  </div>
+                </a>
+              </div>
+              <%# Pending requests %>
+              <div class="card-product-offer">
+                <h4>Status</h4>
+                <p>Seller: <strong><%= request.plante.user.first_name %></strong></p>
+                <p>status:
+                                              <% if request.status.nil? %>
+                                                pending
+                                              <% elsif request.status == true %>
+                                                approved
+                                              <% else %>
+                                                declined
+                                              <% end %>
+                </p>
+                <div class="cancel-btn">
+                  <%= link_to "Cancel request", cancel_path(request), data: { turbo_method: :delete }, class:"cancel"%>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      <% else %>
+        <p>You currently don't have any plants in your cart</p>
+      <% end %>
+    </div>
   </div>
 </div>

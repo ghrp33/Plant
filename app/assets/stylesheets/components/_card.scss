@@ -89,3 +89,20 @@
     color: #2c6e49;
   }
 }
+
+.cancel {
+  background-color: rgb(255, 56, 30);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.cancel:hover {
+  background-color: rgb(139, 35, 22);
+}
+
+.cancel-btn {
+  margin: 15px;
+
+}
