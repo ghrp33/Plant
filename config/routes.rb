@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   delete '/myplants/:id', to: 'plantes#destroy', as: "delete"
   patch '/accept/:id', to: 'requests#accept', as: "accept"
   patch '/reject/:id', to: 'requests#reject', as: "reject"
+  delete '/cancel/:id', to: 'requests#cancel', as: "cancel"
 end

@@ -41,7 +41,13 @@ class RequestsController < ApplicationController
     end
   end
 
-    private
+  def cancel
+    @request = Request.find(params[:id])
+    @request.delete
+    redirect_to requests_path
+  end
+
+  private
 
   def set_plante
     @plante = Plante.find(params[:plante_id])
