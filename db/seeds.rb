@@ -61,7 +61,7 @@ second_plante.save!
     plante = Plante.new(
       name: Faker::Cannabis.brand,
       price: rand(100),
-      variety: Faker::Cannabis.cannabinoid
+      variety: [ "Monstera", "Pothos", "Succulent", "Bonsai", "Palm", "Snake", "Tropical", "Fern", "Ficus" ].sample
     )
     file = URI.open("https://fleuristeladiva.ca/boutique/image/cache/catalog/Plantes%20/Fleuriste_la_diva_plante_schefflera_plante_int%C3%A9rieure_Laval-550x550.jpg")
     plante.image.attach(io: file, filename: "plante", content_type: "image/png")

@@ -23,7 +23,7 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @request.status = true
     if @request.save
-      redirect_to requests_path
+      redirect_to myplants_path, status: :see_other
     else
       flash.now[:alert] = 'No longer available'
       render 'plantes/show', status: 422
@@ -34,14 +34,20 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @request.status = false
     if @request.save
-      redirect_to requests_path
+      redirect_to myplants_path, status: :see_other
     else
       flash.now[:alert] = 'No longer available'
       render 'plantes/show', status: 422
     end
   end
 
-    private
+  def cancel
+    @request = Request.find(params[:id])
+    @request.delete
+    redirect_to requests_path
+  end
+
+  private
 
   def set_plante
     @plante = Plante.find(params[:plante_id])

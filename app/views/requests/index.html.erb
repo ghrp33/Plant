@@ -10,7 +10,7 @@
             class: "form-control",
             placeholder: "Look for plant"
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Search", name: "", class: "btn-flat text-decoration-none" %>
     <% end %>
   </div>
   </div>
@@ -39,8 +39,10 @@
                 declined
               <% end %>
                 <p>Plante name: <%= request.plante.name %></p>
+                <%= link_to "Cancel request", cancel_path(request), data: { turbo_method: :delete } %>
           </div>
       </div>
     <% end %>
   </div>
+<%= link_to 'return to homepage', root_path, class: 'btn-flat text-decoration-none' %>
 </div>
