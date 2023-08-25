@@ -1,12 +1,9 @@
 
 <div class="container">
   <div class='row py-5'>
-    <div class='col-10'>
-      <h1>All Plants</h1>
-    </div>
-    <div>
-      <%= link_to "Add a plant", new_plante_path, class: 'btn-flat text-decoration-none m-2' %>
-    </div>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80)">
+      Plants
+      </div>
   </div>
 
   <div class="row justify-content-center">
@@ -15,47 +12,68 @@
       <%= text_field_tag :query,
             params[:query],
             class: "form-control",
-            placeholder: "Look for plant"
+            placeholder: "Look for a specific plant"
         %>
+
+        <div class="mx-auto" >
+          <%= submit_tag "Search", name: "", class: "btn btn-outline-danger" %>
+        </div>
+    <% end %>
+  </div>
+  <div class="col-sm-2 my-2">
+    <%= link_to "Add a plant", new_plante_path, class: 'btn-flat text-decoration-none m-2' %>
+  </div>
       <%= select_tag(:variety, options_for_select([ "Monstera", "Pothos", "Succulent", "Bonsai", "Palm", "Snake", "Tropical", "Fern", "Ficus" ]), prompt: "Variety") %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Search", name: "", class: "btn btn-outline-danger" %>
     <% end %>
   </div>
 
   </div>
 
   <%# Plant card %>
-    <% if @plantes.any? %>
+  <div class="card-container">
+     <% if @plantes.any? %>
   <div class="row row-cols-1 row-cols-md-4 g-4">
     <% @plantes.each do |plante| %>
-      <div>
         <div class="col">
-            <% if plante.image.attached?%>
-            <div class="card">
-              <a href="<%= plante_path(plante) %>">
-               <%= cl_image_tag plante.image.key, class: "object-fit-cover", width: "100%", height: "300px" %>
-              </a>
-            </div>
-            <% else %>
-              <%= image_tag "No_images_available.webp", alt: plante.name, width: "100%", height: "300px" %>
-            <% end %>
-             <div>
-              <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
-              <h5 class="fw-bold"><%= plante.name %></h5>
-              <p class="fst-italic"><%= plante.variety %></p>
-              <p class="card-trip-pricing"><%= plante.price %>$</p>
-              <% if plante.user == current_user %>
-              <% else %>
-                <%= link_to "Buy", plante_requests_path(plante), data: { turbo_method: :post }, class: 'btn-flat text-decoration-none' %>
-              <% end %>
+
+              <div class="card-plante">
+                <div class="image">
+                  <a href="<%= plante_path(plante) %>">
+                    <% if plante.image.attached?%>
+                      <%= cl_image_tag plante.image.key, class: "object-fit-cover", width: "100%", height: "300px" %>
+                  </a>
+                    <% else %>
+                      <%= image_tag "No_images_available.webp", class: "object-fit-cover", alt: plante.name, width: "100%", height: "300px" %>
+                    <% end %>
+                </div>
+                <div class="card-body">
+                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-user avatar-bordered"/>
+                  <div class="row">
+                    <div class="col-8">
+                      <h5 class="fw-bold"><%= plante.name %></h5>
+                      <p class="fst-italic"><%= plante.variety %></p>
+                    </div>
+                    <div class="col">
+                    <div class="buy-info">
+                      <p class="card-trip-pricing"><%= plante.price %>$</p>
+                      <div class="request-button">
+                        <%= link_to "Buy", plante_requests_path(plante), class: "btn-flat text-decoration-none", data: { turbo_method: :post } if plante.user == current_user %>
+                      </div>
+                    </div>
+                    </div>
+                  </div>
+                <div>
+              </div>
               </div>
         </div>
       </div>
     <% end %>
-
     <% else %>
       <em>Sorry, no plants found for <%= params[:query] %>.</em>
     <% end %>
+  </div>
+
   </div>
 
 </div>
