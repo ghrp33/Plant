@@ -45,18 +45,12 @@
     width: 40px;
   }
 
-  .request-button {
-    font-size: 15px;
-    align-items: flex-end;
-    right: 16px;
-    top: -20px;
-    text-align: justify;
-  }
-
   .buy-info {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     font-weight: bold;
+    font-size: 15px;
+    text-align: justify;
   }
 }
