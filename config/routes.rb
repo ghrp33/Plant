@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :requests, only: %i[index]
   get '/myplants', to: 'plantes#myplants'
+  delete '/myplants/:id', to: 'plantes#destroy', as: "delete"
   patch '/accept/:id', to: 'requests#accept', as: "accept"
   patch '/reject/:id', to: 'requests#reject', as: "reject"
   delete '/cancel/:id', to: 'requests#cancel', as: "cancel"
