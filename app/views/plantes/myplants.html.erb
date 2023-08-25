@@ -1,45 +1,39 @@
 <div class="container">
-  <div class='row py-5'>
-      <div class='col-10'>
-        <h1>My Plants</h1>
-      </div>
-  </div>
 
-  <div class="row row-cols-1 row-cols-md-4 g-4">
-  <% @myplants.each do |plante| %>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <div>
-          <div>
-          <%# plant image %>
-            <% if  plante.image.attached?%>
-              <%= cl_image_tag plante.image.key, height: 300, width: 300, crop: :fill %>
-            <% else %>
-              <%= image_tag "No_images_available.webp", alt: plante.name, width: "300px", height: "100%" %>
-            <% end %>
-          </div>
-          <%# plant info %>
-          <div class="card-body">
-            <h5 class="card-title"><%= plante.name %></h5>
-            <p class="card-text"><%= plante.variety %></p>
-            <p class="card-text"><%= plante.price %>$</p>
+  <h1 class='py-5'>My Plants</h1>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <% @myplants.each do |plante| %>
+        <div class="col">
+          <div class="card" style="width: 300px">
+            <a class='card-link' href ="<%= plante_path(plante) %>">
+              <div>
+                <% if  plante.image.attached?%>
+                  <%= cl_image_tag plante.image.key, height: 300, width: 300, crop: :fill %>
+                <% else %>
+                  <%= image_tag "No_images_available.webp", alt: plante.name, width: "300px", height: "100%" %>
+                <% end %>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title"><%= plante.name %></h5>
+                <p class="card-text"><%= plante.variety %></p>
+                <p class="card-text"><%= plante.price %>$</p>
+              </div>
+              <div>
+                <% if plante.requests.any? %>
+                  <% plante.requests.each do |request| %>
+                    <% if request.status.nil? %>
+                      <%= request.user.first_name %>
+                      <%= link_to "Accept", accept_path(request), data: { turbo_method: :patch } %>
+                      <%= link_to "Reject", reject_path(request), data: { turbo_method: :patch } %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              </div>
+            </a>
           </div>
         </div>
-        <%# plant requests %>
-        <div>
-          <% if plante.requests.any? %>
-            <% plante.requests.each do |request| %>
-              <% if request.status.nil? %>
-                <%= request.user.first_name %>
-                <%= link_to "Accept", accept_path(request), data: { turbo_method: :patch } %>
-                <%= link_to "Reject", reject_path(request), data: { turbo_method: :patch } %>
-              <% end %>
-            <% end %>
-          <% end %>
-
-        </div>
-      </div>
+      <% end %>
     </div>
-    <% end %>
-  </div>
 </div>
+
+<%= link_to "Back to plants", plantes_path, class: 'btn btn-primary' %>
