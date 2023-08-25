@@ -44,7 +44,7 @@
               <p class="card-trip-pricing"><%= plante.price %>$</p>
               <% if plante.user == current_user %>
               <% else %>
-                <%= link_to "Make a request", plante_requests_path(plante), data: { turbo_method: :post }, class: 'btn-flat text-decoration-none' %>
+                <%= link_to "Buy", plante_requests_path(plante), data: { turbo_method: :post }, class: 'btn-flat text-decoration-none' %>
               <% end %>
               </div>
         </div>
