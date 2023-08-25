@@ -1,11 +1,17 @@
 <div class="container">
   <%# Title %>
-  <h1 class='py-5'>My Plants</h1>
-
-    <%# grid %>
-    <div class="cards">
-
-      <%# card %>
+  <div class='row py-5'>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1470058869958-2a77ade41c02?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80)">
+      My Plants
+      </div>
+  </div>
+  <div class="d-flex justify-content-center">
+      <%= link_to "Add a plant", new_plante_path, class: 'btn-flat text-decoration-none' %>
+  </div>
+  <%# grid %>
+  <div class="cards">
+    <%# card %>
+    <% if @myplants.any? %>
       <% @myplants.each do |plante| %>
         <div class="card-product">
           <div class="card-product-info">
@@ -45,5 +51,8 @@
           </div>
         </div>
       <% end %>
+    <% else %>
+      <p>You currently don't have any plants.</p>
+    <% end %>
   </div>
 </div>

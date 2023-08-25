@@ -21,7 +21,7 @@
     </div>
     <div class="col-sm-2 my-3">
     <%# Add button %>
-      <%= link_to "Add a plant", new_plante_path, class: 'btn-flat text-decoration-none m-2' %>
+      <%= link_to "Add a plant", new_plante_path, class: 'btn-flat text-decoration-none' %>
     </div>
   </div>
 
@@ -43,18 +43,16 @@
                 </a>
               </div>
               <div class="card-body">
-                <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-user avatar-bordered"/>
+                <img src="https://avatars.githubusercontent.com/u/119386023?v=4" class="card-user avatar-bordered"/>
                 <div class="row">
                   <div class="col-8">
                     <h5 class="fw-bold"><%= plante.name %></h5>
                     <p class="fst-italic"><%= plante.variety %></p>
                   </div>
-                  <div class="col">
+                  <div class="col-4">
                     <div class="buy-info">
                       <p class="card-trip-pricing"><%= plante.price %>$</p>
-                      <div class="request-button">
-                        <%= link_to "Buy", plante_requests_path(plante), class: "btn-flat text-decoration-none", data: { turbo_method: :post } if plante.user != current_user %>
-                      </div>
+                      <%= link_to "Buy", plante_requests_path(plante), class: "btn-flat text-decoration-none", data: { turbo_method: :post } if plante.user != current_user %>
                     </div>
                   </div>
                 </div>
