@@ -3,46 +3,42 @@
       <div class='col-10'>
         <h1>My Plants</h1>
       </div>
-      <div class='col-2'>
-        <%= link_to "Back to plants", plantes_path, class: 'btn btn-primary' %>
-      </div>
   </div>
 
-  <div class="row row-cols-1 row-cols-md-4 g-4">
-  <% @myplants.each do |plante| %>
-    <div class="col">
-      <div class="card" style="width: 18rem;">
-        <div>
-          <div>
-          <%# plant image %>
-            <% if  plante.image.attached?%>
-              <%= cl_image_tag plante.image.key, height: 300, width: 300, crop: :fill %>
-            <% else %>
-              <%= image_tag "No_images_available.webp", alt: plante.name, width: "300px", height: "100%" %>
-            <% end %>
-          </div>
-          <%# plant info %>
-          <div class="card-body">
-            <h5 class="card-title"><%= plante.name %></h5>
-            <p class="card-text"><%= plante.variety %></p>
-            <p class="card-text"><%= plante.price %>$</p>
+   <div class="cards">
+    <% @myplants.each do |plante| %>
+      <div class="card-product">
+        <div class="card-product-info">
+          <% if  plante.image.attached?%>
+            <%= cl_image_tag plante.image.key, height: 300, width: 300, crop: :fill %>
+          <% else %>
+            <%= image_tag "No_images_available.webp", alt: plante.name, width: "300px", height: "100%" %>
+          <% end %>
+          <div class="card-product-text">
+            <h5><strong><%= plante.name %></strong></h5>
+            <p><%= plante.variety %></p>
+            <p><%= plante.price %>$</p>
           </div>
         </div>
-        <%# plant requests %>
-        <div>
+        <div class="card-product-offer">
+          <h4>Offers</h4>
           <% if plante.requests.any? %>
             <% plante.requests.each do |request| %>
               <% if request.status.nil? %>
-                <%= request.user.first_name %>
-                <%= link_to "Accept", accept_path(request), data: { turbo_method: :patch } %>
-                <%= link_to "Reject", reject_path(request), data: { turbo_method: :patch } %>
+                <p>Offer from <strong><%= request.user.first_name %></strong>
+                <%= link_to "Accept", accept_path(request), data: { turbo_method: :patch }, class:"accept" %>
+                <%= link_to "Reject", reject_path(request), data: { turbo_method: :patch }, class:"reject" %></p>
+              <% elsif request.status == true %>
+                <p>Offer from <strong><%= request.user.first_name %></strong> accepted <i class="fa-solid fa-check" style="color: #30f260; margin-left: 15px;"></i></p>
+              <% else %>
+                <p>Offer from <strong><%= request.user.first_name %></strong> rejected <i class="fa-solid fa-xmark" style="color: #ff381e; margin-left: 15px"></i></p>
               <% end %>
             <% end %>
+            <% else %>
+            <p>No offer made yet</p>
           <% end %>
-
         </div>
       </div>
-    </div>
     <% end %>
   </div>
 </div>
