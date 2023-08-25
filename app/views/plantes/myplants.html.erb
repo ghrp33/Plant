@@ -5,10 +5,11 @@
       My Plants
       </div>
   </div>
-
+  <div class="d-flex justify-content-center">
+      <%= link_to "Add a plant", new_plante_path, class: 'btn-flat text-decoration-none' %>
+  </div>
   <%# grid %>
   <div class="cards">
-
     <%# card %>
     <% if @myplants.any? %>
       <% @myplants.each do |plante| %>
