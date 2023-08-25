@@ -2,7 +2,7 @@ class Plante < ApplicationRecord
   belongs_to :user
   validates :name, :price, presence: true
   has_one_attached :image
-  has_many :requests
+  has_many :requests, dependent: :destroy
 
   include PgSearch::Model
   pg_search_scope :search_by_name_and_variety_and_description,
